@@ -220,17 +220,15 @@ var GridTable = React.createClass({
     // If we're currently loading, populate the loading content
     if (this.props.externalIsLoading) {
       var defaultLoadingStyle = null;
-      var defaultColSpan = null;
 
       if (this.props.useGriddleStyles) {
         defaultLoadingStyle = {
           textAlign: "center",
           paddingBottom: "40px"
         };
-
-        defaultColSpan = this.props.columnSettings.getVisibleColumnCount();
       }
 
+      var defaultColSpan = this.props.columnSettings.getVisibleColumnCount();
       var loadingComponent = this.props.externalLoadingComponent ?
         (<this.props.externalLoadingComponent/>) :
         (<div>Loading...</div>);
