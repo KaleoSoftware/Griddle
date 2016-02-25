@@ -124,9 +124,16 @@ var GridTable = React.createClass({
         // Split the amount of nodes.
         nodeData = nodeData.slice(displayStart, displayEnd+1);
 
+        // MK - Hack some columns into the spacer row to force column widths
+        var spacerCols = null;
+        if (this.props.columnSettings) {
+          spacerCols = this.props.columnSettings.columnMetadata.map(function(col, i) {
+            return (<td className={col.cssClassName} key={i} />);
+          })
+        }
         // Set the above and below nodes.
         var aboveSpacerRowStyle = { height: (displayStart * adjustedHeight) + "px" };
-        aboveSpacerRow = (<tr key={'above-' + aboveSpacerRowStyle.height} style={aboveSpacerRowStyle}></tr>);
+        aboveSpacerRow = (<tr key={'above-' + aboveSpacerRowStyle.height} style={aboveSpacerRowStyle}>{spacerCols}</tr>);
         var belowSpacerRowStyle = { height: ((this.props.data.length - displayEnd) * adjustedHeight) + "px" };
         belowSpacerRow = (<tr key={'below-' + belowSpacerRowStyle.height} style={belowSpacerRowStyle}></tr>);
       }
