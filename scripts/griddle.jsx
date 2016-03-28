@@ -249,7 +249,8 @@ var Griddle = React.createClass({
     },
     nextPage: function() {
         var currentPage = this.getCurrentPage();
-        if (currentPage < this.getCurrentMaxPage() - 1) { this.setPage(currentPage + 1); }
+        if (currentPage < this.getCurrentMaxPage()) { this.setPage(currentPage + 1); }
+        // if (currentPage < this.getCurrentMaxPage() - 1) { this.setPage(currentPage + 1); }
     },
     previousPage: function() {
       var currentPage = this.getCurrentPage();
